@@ -1,6 +1,7 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 const CURRENT_WORKING_DIR = process.cwd()
+const Dotenv = require('dotenv-webpack')
 
 const config = {
     name: "server",
@@ -25,7 +26,10 @@ const config = {
                 use: 'file-loader'
             }
         ]
-    }
+    },
+    plugins: [
+        new Dotenv()
+    ],
 }
 
 module.exports = config

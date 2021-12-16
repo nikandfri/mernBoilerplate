@@ -2,9 +2,12 @@ import config from './../config/config'
 import app from './express'
 import mongoose from 'mongoose'
 
+console.log(process.env.JWT_SECRET);
+
 // Connection URL
-mongoose.Promise = global.Promise
-mongoose.connect(config.mongoUri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+// mongoose.Promise = global.Promise
+mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+  if (!err) console.log('MongoDB has connected successfully.')})
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${config.mongoUri}`)
 })
