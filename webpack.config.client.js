@@ -2,10 +2,12 @@ const path = require('path')
 const webpack = require('webpack')
 const CURRENT_WORKING_DIR = process.cwd()
 
+// https://stackoverflow.com/questions/48047150/chrome-extension-compiled-by-webpack-throws-unsafe-eval-error
+
 const config = {
     name: "browser",
     mode: "development",
-    devtool: 'eval-source-map',
+    devtool: 'cheap-module-source-map',
     entry: [
         'webpack-hot-middleware/client?reload=true',
         path.join(CURRENT_WORKING_DIR, 'client/main.js')
